@@ -182,7 +182,8 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
     constraints_lowerbound[i] = 0;
     constraints_upperbound[i] = 0;
   }
-
+  
+  //special case for all the initial state values:
   constraints_lowerbound[x_start] = x;
   constraints_lowerbound[y_start] = y;
   constraints_lowerbound[psi_start] = psi;
@@ -238,5 +239,16 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
   //
   // {...} is shorthand for creating a vector, so auto x1 = {1.0,2.0}
   // creates a 2 element double vector.
-  return {};
+ 
+  vector<double> result;
+ 
+  result.push_back(solution.x[delta_start]);
+  result.push_back(solution.x[a_start]);
+ 
+  for (int i = 0; i < N-1; i++)
+  {
+   result.push_back(solution.x[x_start + i + 1]);
+   result.push_back(solution.x[y_start + i + 1]);
+  }
+  return result;
 }
