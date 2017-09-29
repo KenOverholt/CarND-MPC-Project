@@ -95,8 +95,8 @@ int main() {
           for (size_t i = 0; i < ptsx.size(); i++)
           {
             //shift car reference angle to 90 degrees
-            double shift_x = ptsx[i].px;
-            double shift_y = ptsy[i].py;
+            double shift_x = ptsx[i]-px;
+            double shift_y = ptsy[i]-py;
             
             ptsx[i] = (shift_x * cos(0-psi)-shift_y*sin(0-psi));
             ptsy[i] = (shift_y * sin(0-psi)-shift_y*cos(0-psi));
@@ -127,7 +127,7 @@ int main() {
           *
           */
            
-          auto vars = mps.Solve(state, coeffs);
+          auto vars = mpc.Solve(state, coeffs);
           
           
           //.. add (x,y) points to list here, points are in reference to the vehicle's coordinate system
@@ -167,7 +167,7 @@ int main() {
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
           // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
           msgJson["steering_angle"] = vars[0]/(deg2rad(25)*Lf);
-          msgJson["throttle"] = vars[i];
+          msgJson["throttle"] = vars[1];
             
           msgJson["next_x"] = next_x_vals;
           msgJson["next_y"] = next_y_vals;
