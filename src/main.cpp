@@ -92,7 +92,7 @@ int main() {
           double psi = j[1]["psi"];
           double v = j[1]["speed"];
 
-          for (int i = 0; i < ptsx.size(); i++)
+          for (size_t i = 0; i < ptsx.size(); i++)
           {
             //shift car reference angle to 90 degrees
             double shift_x = ptsx[i].px;
