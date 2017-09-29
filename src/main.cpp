@@ -99,7 +99,7 @@ int main() {
             double shift_y = ptsy[i]-py;
             
             ptsx[i] = (shift_x * cos(0-psi)-shift_y*sin(0-psi));
-            ptsy[i] = (shift_y * sin(0-psi)-shift_y*cos(0-psi));
+            ptsy[i] = (shift_x * sin(0-psi)+shift_y*cos(0-psi));
           }
           
           double* ptrx = &ptsx[0];
@@ -114,8 +114,8 @@ int main() {
           double cte = polyeval(coeffs, 0);
           double epsi = -atan(coeffs[1]);
           
-          double steer_value;
-          double throttle_value;
+          double steer_value = j[1]["steering_angle"];
+          double throttle_value = j[1]["throttle"];
 
           Eigen::VectorXd state(6);
           state << 0,0,0,v,cte,epsi;
