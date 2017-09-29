@@ -28,7 +28,7 @@ double ref_v = 100;
 size_t x_start = 0;
 size_t y_start = x_start + N;
 size_t psi_start = y_start + N;
-size_t v_start = psi+start + N;
+size_t v_start = psi_start + N;
 size_t cte_start = v_start + N;
 size_t epsi_start = cte_start + N;
 size_t delta_start = epsi_start + N;
@@ -51,9 +51,9 @@ class FG_eval {
    //Reference State cost
    for (int i = 0; i < N; i++)
    {
-    fg[0] += 2000*CppAD:pow(vars[cte_start + i] - ref_cte, 2);
-    fg[0] += 2000*CppAD:pow(vars[epsi_start + i] - ref_epsi, 2);
-    fg[0] += CppAD:pow(vars[v_start + i] - ref_v, 2);
+    fg[0] += 2000*CppAD::pow(vars[cte_start + i] - ref_cte, 2);
+    fg[0] += 2000*CppAD::pow(vars[epsi_start + i] - ref_epsi, 2);
+    fg[0] += CppAD::pow(vars[v_start + i] - ref_v, 2);
    }
    for (int i = 0; i < N - 1; i++)
    {
@@ -68,11 +68,11 @@ class FG_eval {
    
    //Setup Constraints
    fg[1 + x_start] = vars[x_start];
-   fg{1 + y_start] = vars[y_start];
+   fg[1 + y_start] = vars[y_start];
    fg[1 + psi_start] = vars[psi_start];
-   fg{1 + v_start] = vars[v_start];
+   fg[1 + v_start] = vars[v_start];
    fg[1 + cte_start] = vars[cte_start];
-   fg{1 + y_start] = vars[y_start];
+   fg[1 + y_start] = vars[y_start];
     
    // rest of the constraints
    for (int i = 0; i < N -1; i++) {
