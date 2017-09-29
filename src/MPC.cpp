@@ -51,8 +51,10 @@ class FG_eval {
    //Reference State cost
    for (size_t i = 0; i < N; i++)
    {
-    fg[0] += 2000*CppAD::pow(vars[cte_start + i] - ref_cte, 2);
-    fg[0] += 2000*CppAD::pow(vars[epsi_start + i] - ref_epsi, 2);
+    fg[0] += 2000*CppAD::pow(vars[cte_start + i], 2);
+    //fg[0] += 2000*CppAD::pow(vars[cte_start + i] - ref_cte, 2);
+    fg[0] += 2000*CppAD::pow(vars[epsi_start + i], 2);
+    //fg[0] += 2000*CppAD::pow(vars[epsi_start + i] - ref_epsi, 2);
     fg[0] += CppAD::pow(vars[v_start + i] - ref_v, 2);
    }
    for (size_t i = 0; i < N - 1; i++)
