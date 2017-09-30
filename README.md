@@ -45,7 +45,7 @@ Cross track error is determined by the sine of the psi error multiplied by veloc
 Psi error is determined by velocity multipled by the change time multiplied by the steering angle divided by Lf.  Lf is the distance between the front of the vehicle and its center of gravity.
 >epsi = epsi1 - ((psi0 - psides0) - v0 * delta0 / Lf * dt)
 ## Timestep Length and Elapsed Duration
-[MPC Tuning Results]MPC-Tuning.png
+![MPC Tuning Results](MPC-Tuning.png)
 
 ## Latency
 Latency is implemented by pausing the executing thread for 100 miliseconds.
