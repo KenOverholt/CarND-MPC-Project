@@ -9,9 +9,10 @@ This repo contains the implementation of a Model Predictive Controller (MPC) use
 ## The Model
 ### State
 The state is represented as a vector of 6 elements -- x, y, v, psi, cte, epsi.
--------------|------------------------
-x|horizontal position of the car
-y|vertical position of the car
+Element | Description
+------------- | ------------------------
+x | horizontal position of the car
+y | vertical position of the car
 are the coordinates of the car.  v is the velocity of the c
 ### Actuators
 The actuators are represented as a vector of 2 elements -- delta, a.
