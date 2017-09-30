@@ -2,6 +2,17 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## This project
+
+This repo contains the implementation of a Model Predictive Controller (MPC) used to drive a car around a track in a Unity simulator.
+
+## The Model
+
+### State
+The state is represented as a vector of 6 elements -- x, y, v, psi, cte, epsi.
+### Actuators
+The actuators are represented as a vector of 2 elements -- delta, a.
+### Update Equations
 
 ## Dependencies
 
