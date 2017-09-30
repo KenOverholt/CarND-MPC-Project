@@ -9,14 +9,36 @@ This repo contains the implementation of a Model Predictive Controller (MPC) use
 ## The Model
 ### State
 The state is represented as a vector of 6 elements -- x, y, v, psi, cte, epsi.
-Element | Description
-------------- | ------------------------
-x | horizontal position of the car
-y | vertical position of the car
-are the coordinates of the car.  v is the velocity of the c
+
+| Element | Description |
+|:-------------:|:------------------------:|
+|x | horizontal position of the car|
+|y | vertical position of the car|
+|psi| orientation of the car in radians|
+|v| velocity of the car|
+|cte| cross track error|
+|epsi| error with respect to psi|
+
 ### Actuators
 The actuators are represented as a vector of 2 elements -- delta, a.
+
+| Element | Description |
+|:-------------:|:------------------------:|
+|delta | steering angle|
+|a | acceleration|
+
 ### Update Equations
+   x = x1 - (x0 + v0 * cos(psi0) *dt)
+   x is determined by multiplying the velocity by the change in time by the cosine of psi
+   y = y1 - (y0 + v0 * sin(psi0) *dt)
+   
+ psi = psi1 - (psi0 - v0 * delta0 / Lf*dt)
+ 
+   v = v1 - (v0 + a0 * dt)
+   
+ cte = cte1 - ((f0 - y0) + (v0 * sin(epsi0) *dt))
+ 
+epsi = epsi1 - ((psi0 - psides0) - v0 * delta0 / Lf * dt)
 
 ## Dependencies
 
