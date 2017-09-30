@@ -29,22 +29,22 @@ The actuators are represented as a vector of 2 elements -- delta, a.
 
 ### Update Equations
 x is determined by multiplying the velocity by the change in time by the cosine of psi
->>x = x1 - (x0 + v0 * cos(psi0) *dt)
+>x = x1 - (x0 + v0 * cos(psi0) *dt)
 
 x is determined by mulitplying the velocity by the change in time by the sin of psi
->>y = y1 - (y0 + v0 * sin(psi0) *dt)
+>y = y1 - (y0 + v0 * sin(psi0) *dt)
 
 Psi is determined by mulitplying the velocity by the change in time by the steering angle divided by Lf.  Lf is the distance between the front of the vehicle and its center of gravity. 
->>psi = psi1 - (psi0 - v0 * delta0 / Lf*dt)
+>psi = psi1 - (psi0 - v0 * delta0 / Lf*dt)
 
 Velocity is determined by acceleration multiplied by the change in time.
->>v = v1 - (v0 + a0 * dt)
+>v = v1 - (v0 + a0 * dt)
 
 Cross track error is determined by the sine of the psi error multiplied by velocity multipled by the change in time.
->>cte = cte1 - ((f0 - y0) + (v0 * sin(epsi0) *dt))
+>cte = cte1 - ((f0 - y0) + (v0 * sin(epsi0) *dt))
 
 Psi error is determined by velocity multipled by the change time multiplied by the steering angle divided by Lf.  Lf is the distance between the front of the vehicle and its center of gravity.
->>epsi = epsi1 - ((psi0 - psides0) - v0 * delta0 / Lf * dt)
+>epsi = epsi1 - ((psi0 - psides0) - v0 * delta0 / Lf * dt)
 ## Dependencies
 
 * cmake >= 3.5
