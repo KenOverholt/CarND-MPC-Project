@@ -6,6 +6,7 @@ Self-Driving Car Engineer Nanodegree Program
 This repo contains the implementation of a Model Predictive Controller (MPC) used to drive a car around a track in a Unity simulator.
 
 ## The Model
+
 ### State
 The state is represented as a vector of 6 elements -- x, y, v, psi, cte, epsi.
 
@@ -44,13 +45,19 @@ Cross track error is determined by the sine of the psi error multiplied by veloc
 
 Psi error is determined by velocity multipled by the change time multiplied by the steering angle divided by Lf.  Lf is the distance between the front of the vehicle and its center of gravity.
 >epsi = epsi1 - ((psi0 - psides0) - v0 * delta0 / Lf * dt)
+
 ## Timestep Length and Elapsed Duration
-I experimented with differnet timestep/duration combinations as documented in the table below.  I settled on the final row which produced the fastest maximum speed while allowing the car to make it around the track.
+
+The horizon is the duration over which future predictions are made. A driver can only get value out of a few seconds of a horizon so calculating anything beyond that is a waste of CPU cycles.  The horizon is made up of the number of timesteps, N, multiplied by the length, dt, of each timestep.  A smaller dt provides finer resolution but takes more CPU cycles for the same horizon.  Too small of a horizon reduces the accuracy of the car's prediction.
+
+I experimented with differnet timestep/duration combinations as documented in the table below.  I settled on the final row which produced the fastest maximum speed while keeping the car on the road around the whole track.
 
 ![MPC Tuning Results](MPC-Tuning.png)
 
+
 ## Latency
-Latency is implemented by pausing the executing thread for 100 miliseconds.
+
+There is latency beetween the time the trajectory is calculated and the actuators make modifications.  The program accounts for that latency by applying the update equations to the first state before feeding the state into the solver.
 
 ## Dependencies
 
