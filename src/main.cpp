@@ -132,9 +132,9 @@ int main() {
           x += v * cos(psi) * latency;
           y += v * sin(psi) * latency;
           psi -= v * d / Lf * latency;
-          v += a * latency;
           cte += v * sin(epsi) * latency;
           epsi += epsi - v * d / Lf * latency;
+          v += a * latency;
           
           //assign state with latency
           state << x, y, psi, v, cte, epsi;
