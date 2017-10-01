@@ -180,7 +180,6 @@ int main() {
               mpc_y_vals.push_back(vars[i]);
             }
           }
-          double Lf = 2.67;
           
           json msgJson;
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
