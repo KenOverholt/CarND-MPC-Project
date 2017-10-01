@@ -92,6 +92,11 @@ int main() {
           double psi = j[1]["psi"];
           double v = j[1]["speed"];
 
+          double latency = 0.1;
+          
+          px += v * cos(psi) * latency;
+          py += v * sin(psi) * latency;
+          
           for (size_t i = 0; i < ptsx.size(); i++)
           {
             //shift car reference angle to 90 degrees
